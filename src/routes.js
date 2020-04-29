@@ -44,14 +44,14 @@ routes.delete('/menu/item/:id', middleware, celebrate({
 
 routes.get('/delivery', DeliveryController.index)
 routes.post('/delivery', middleware, celebrate({
-  [Segments.PARAMS]: Joi.object().keys({
+  [Segments.BODY]: Joi.object().keys({
     region: Joi.string().required(),
     price: Joi.number().required()
   })
 }), DeliveryController.create)
 
 routes.put('/delivery', middleware, celebrate({
-  [Segments.PARAMS]: Joi.object().keys({
+  [Segments.BODY]: Joi.object().keys({
     region: Joi.string().required(),
     price: Joi.number().required()
   })
