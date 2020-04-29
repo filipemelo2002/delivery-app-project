@@ -9,7 +9,11 @@ const OrderSchema = mongoose.Schema({
     type: String,
     default: ''
   },
-  client_whatsapp: String
+  client_whatsapp: String,
+  finish_time: {
+    type: String,
+    default: ''
+  }
 })
 
 module.exports = mongoose.model('orders', OrderSchema)
