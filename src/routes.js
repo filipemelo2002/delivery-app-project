@@ -5,6 +5,7 @@ const routes = Router()
 const SessionsController = require('./controllers/SessionsController')
 const AdminController = require('./controllers/AdminController')
 const MenuController = require('./controllers/MenuController')
+const DeliveryController = require('./controllers/DeliveryController')
 const middleware = require('./middlewares/auth')
 const { Joi, Segments, celebrate } = require('celebrate')
 
@@ -40,4 +41,25 @@ routes.delete('/menu/item/:id', middleware, celebrate({
     id: Joi.string().required()
   })
 }), MenuController.delete)
+
+routes.get('/delivery', DeliveryController.index)
+routes.post('/delivery', middleware, celebrate({
+  [Segments.PARAMS]: Joi.object().keys({
+    region: Joi.string().required(),
+    price: Joi.number().required()
+  })
+}), DeliveryController.create)
+
+routes.put('/delivery', middleware, celebrate({
+  [Segments.PARAMS]: Joi.object().keys({
+    region: Joi.string().required(),
+    price: Joi.number().required()
+  })
+}), DeliveryController.update)
+
+routes.delete('/delivery/:id', middleware, celebrate({
+  [Segments.PARAMS]: Joi.object().keys({
+    id: Joi.string().required()
+  })
+}), DeliveryController.remove)
 module.exports = routes
