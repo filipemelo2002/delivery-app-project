@@ -27,5 +27,15 @@ module.exports = {
     })
 
     return res.status(201).send()
+  },
+
+  async remove (req, res) {
+    const { id } = req.params
+
+    await Order.findOneAndDelete(
+      { _id: id }
+    )
+    return res.status(201).send()
   }
+
 }

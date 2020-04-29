@@ -82,5 +82,9 @@ routes.put('/orders/:id', middleware, celebrate({
     finish_time: Joi.string().required()
   })
 }), OrderController.update)
-
+routes.delete('/orders/:id', middleware, celebrate({
+  [Segments.PARAMS]: Joi.object().keys({
+    id: Joi.string().required()
+  })
+}), OrderController.remove)
 module.exports = routes
