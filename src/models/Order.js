@@ -5,7 +5,10 @@ const OrderSchema = mongoose.Schema({
   ordered_itens: Array,
   total: Number,
   has_address: Boolean,
-  address: String,
+  address: {
+    type: String,
+    default: ''
+  },
   client_whatsapp: String
 })
 
