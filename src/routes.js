@@ -90,4 +90,10 @@ routes.delete('/orders/:id', middleware, celebrate({
 }), OrderController.remove)
 
 routes.get('/categories', CategoryController.index)
+
+routes.post('/categories', middleware, celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    title: Joi.string().required()
+  })
+}), CategoryController.index)
 module.exports = routes
