@@ -7,6 +7,7 @@ const AdminController = require('./controllers/AdminController')
 const MenuController = require('./controllers/MenuController')
 const DeliveryController = require('./controllers/DeliveryController')
 const OrderController = require('./controllers/OrderController')
+const CategoryController = require('./controllers/CategoryController')
 
 const middleware = require('./middlewares/auth')
 const { Joi, Segments, celebrate } = require('celebrate')
@@ -87,4 +88,6 @@ routes.delete('/orders/:id', middleware, celebrate({
     id: Joi.string().required()
   })
 }), OrderController.remove)
+
+routes.get('/categories', CategoryController.index)
 module.exports = routes
