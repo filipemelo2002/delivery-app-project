@@ -50,7 +50,7 @@ routes.post('/delivery', middleware, celebrate({
   })
 }), DeliveryController.create)
 
-routes.put('/delivery', middleware, celebrate({
+routes.put('/delivery/:id', middleware, celebrate({
   [Segments.BODY]: Joi.object().keys({
     region: Joi.string().required(),
     price: Joi.number().required()
