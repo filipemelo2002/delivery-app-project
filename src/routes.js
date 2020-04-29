@@ -76,4 +76,11 @@ routes.post('/orders', celebrate({
     finish_time: Joi.string()
   })
 }), OrderController.create)
+
+routes.put('/orders/:id', middleware, celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    finish_time: Joi.string().required()
+  })
+}), OrderController.update)
+
 module.exports = routes

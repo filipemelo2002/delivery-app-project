@@ -15,5 +15,17 @@ module.exports = {
     const order = await Order.create(data)
 
     return res.json(order)
+  },
+  async update (req, res) {
+    const { finish_time } = req.body
+    const { id } = req.params
+
+    await Order.findByIdAndUpdate({
+      _id: id
+    }, {
+      finish_time
+    })
+
+    return res.status(201).send()
   }
 }
