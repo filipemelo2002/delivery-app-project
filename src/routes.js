@@ -6,6 +6,8 @@ const SessionsController = require('./controllers/SessionsController')
 const AdminController = require('./controllers/AdminController')
 const MenuController = require('./controllers/MenuController')
 const DeliveryController = require('./controllers/DeliveryController')
+const OrderController = require('./controllers/OrderController')
+
 const middleware = require('./middlewares/auth')
 const { Joi, Segments, celebrate } = require('celebrate')
 
@@ -62,4 +64,16 @@ routes.delete('/delivery/:id', middleware, celebrate({
     id: Joi.string().required()
   })
 }), DeliveryController.remove)
+
+routes.get('/orders', middleware, OrderController.index)
+routes.post('/orders', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    ordered_itens: Joi.array().required(),
+    total: Joi.number().required(),
+    has_address: Joi.boolean().required(),
+    client_whatsapp: Joi.string().required(),
+    address: Joi.string(),
+    finish_time: Joi.string()
+  })
+}), OrderController.create)
 module.exports = routes
