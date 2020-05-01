@@ -96,5 +96,18 @@ routes.post('/categories', middleware, celebrate({
   [Segments.BODY]: Joi.object().keys({
     title: Joi.string().required()
   })
-}), CategoryController.index)
+}), CategoryController.create)
+
+routes.put('/categories/:id', middleware, celebrate({
+  [Segments.PARAMS]: Joi.object().keys({
+    id: Joi.string().required()
+  })
+}), CategoryController.update)
+
+routes.delete('/categories/:id', middleware, celebrate({
+  [Segments.PARAMS]: Joi.object().keys({
+    id: Joi.string().required()
+  })
+}), CategoryController.remove)
+
 module.exports = routes

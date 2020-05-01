@@ -11,6 +11,23 @@ module.exports = {
     const category = await Category.create({ title })
 
     return res.json(category)
+  },
+  async update (req, res) {
+    const { id: _id } = req.params
+    const { title } = req.body
+    await Category.findOneAndUpdate({
+      _id
+    }, {
+      title
+    })
+
+    return res.status(201).send()
+  },
+  async remove (req, res) {
+    const { id: _id } = req.params
+    await Category.findOneAndDelete({ _id })
+
+    return res.status(201).send()
   }
 
 }
