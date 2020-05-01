@@ -8,13 +8,14 @@ module.exports = {
     return res.json(itens)
   },
   async create (req, res) {
-    const { title, description, img_url, price } = req.body
+    const { title, description, img_url, price, category } = req.body
 
     const item = await MenuOption.create({
       title,
       description,
       img_url,
-      price
+      price,
+      category
     })
 
     return res.json(item)

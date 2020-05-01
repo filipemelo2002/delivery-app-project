@@ -26,7 +26,8 @@ routes.post('/menu/item', middleware, celebrate({
     title: Joi.string().required(),
     description: Joi.string().required(),
     img_url: Joi.string().required(),
-    price: Joi.number().required()
+    price: Joi.number().required(),
+    category: Joi.string().required()
   })
 }), MenuController.create)
 
