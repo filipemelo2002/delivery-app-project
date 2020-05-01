@@ -9,4 +9,12 @@ describe('Categories', () => {
       .set('authorization', 'Bearer ' + token)
     expect(res.statusCode).toBe(200)
   })
+
+  it('Should create a new category', async () => {
+    const res = await request(app)
+      .put('/categories/5eac5523e1349f0e9089bddf')
+      .send({ title: 'Hamburguers' })
+      .set('authorization', 'Bearer ' + token)
+    expect(res.statusCode).toBe(200)
+  })
 })
