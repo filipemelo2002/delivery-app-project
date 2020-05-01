@@ -1,6 +1,6 @@
 const app = require('../../src/app')
 const request = require('supertest')
-
+const { token } = require('./config')
 describe('POST endpoints', () => {
   it('Create a new Region', async () => {
     const res = await request(app).post('/sessions').send({ user: 'admin123', password: 'admin123' })
@@ -23,7 +23,7 @@ describe('POST endpoints', () => {
   ids.forEach(element => {
     it('Should delete a region', async () => {
       const res = await request(app).delete('/delivery/' + element._id).set(
-        'authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWE4YzNjYzExYjRjNTBiM2NhNWQxNzAiLCJpYXQiOjE1ODgxNzg4MDIsImV4cCI6MTU4ODE4MjQwMn0.cwVoAzBuXaQ3oG53oITrknneOrCBwHZqYYbz_gUZ2Yg'
+        'authorization', 'Bearer ' + token
       )
       expect(res.statusCode).toBe(201)
     })
