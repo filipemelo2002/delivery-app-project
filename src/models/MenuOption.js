@@ -5,7 +5,7 @@ const MenuOptionSchema = mongoose.Schema({
   img_url: String,
   description: String,
   price: Number,
-  category: [{ type: Schema.Types.ObjectId, ref: 'category' }]
+  category: { type: Schema.Types.ObjectId, ref: 'category' }
 })
 
 module.exports = mongoose.model('menuoption', MenuOptionSchema)

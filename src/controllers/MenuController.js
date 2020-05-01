@@ -3,7 +3,7 @@ const MenuOption = require('../models/MenuOption')
 module.exports = {
 
   async index (req, res) {
-    const itens = await MenuOption.find()
+    const itens = await MenuOption.find().populate('category')
 
     return res.json(itens)
   },
